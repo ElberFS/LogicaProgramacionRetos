@@ -1,6 +1,6 @@
 <?php
 /*
-
+#02 ESTRUCTURA DE DATOS
  * Crea una agenda de contactos por terminal.
  * - Debes implementar funcionalidades de búsqueda, inserción, actualización y eliminación de contactos.
  * - Cada contacto debe tener un nombre y un número de teléfono.
