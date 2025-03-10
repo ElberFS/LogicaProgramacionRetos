@@ -1,5 +1,6 @@
 <?php
 /*
+
 #02 FUNCIONES Y ALCANCE
 * Crea una función que reciba dos parámetros de tipo cadena de texto y retorne un número.
  * - La función imprime todos los números del 1 al 100. Teniendo en cuenta que:
