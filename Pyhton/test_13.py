@@ -40,8 +40,6 @@ class TestSuma(unittest.TestCase):
         self.assertIn(12,lista2)
     
 
-
-
 #  * DIFICULTAD EXTRA (opcional):
 #  * Crea un diccionario con las siguientes claves y valores:
 #  * "name": "Tu nombre"
