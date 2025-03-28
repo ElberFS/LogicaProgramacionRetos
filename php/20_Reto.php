@@ -24,13 +24,13 @@ $response = file_get_contents($url);
 if ($response !== false) {
     echo "Petición exitosa:\n";
     echo $response;
-} else {
+    } else {
     echo "Error en la petición.";
-}
+    }
 
-echo "\n\nDIFICULTAD EXTRA: Obtener información de un Pokémon con la PokéAPI\n";
+    echo "\n\nDIFICULTAD EXTRA: Obtener información de un Pokémon con la PokéAPI\n";
 
-function obtenerPokemon(string $nombre) {
+    function obtenerPokemon(string $nombre) {
     $url = "https://pokeapi.co/api/v2/pokemon/" . strtolower($nombre);
     $response = file_get_contents($url);
     
@@ -51,6 +51,29 @@ function obtenerPokemon(string $nombre) {
         echo ucfirst($type["type"]["name"]) . " ";
     }
     echo "\n";
+    
+    $especie_url = $data["species"]["url"];
+    $especie_response = file_get_contents($especie_url);
+    $especie_data = json_decode($especie_response, true);
+    
+    $cadena_evolucion_url = $especie_data["evolution_chain"]["url"];
+    $cadena_evolucion_response = file_get_contents($cadena_evolucion_url);
+    $cadena_evolucion_data = json_decode($cadena_evolucion_response, true);
+    
+    echo "Cadena de evolución: ";
+    $evolucion = $cadena_evolucion_data["chain"];
+    while (isset($evolucion["evolves_to"]) && !empty($evolucion["evolves_to"])) {
+        echo ucfirst($evolucion["species"]["name"]) . " -> ";
+        $evolucion = $evolucion["evolves_to"][0];
+    }
+    echo ucfirst($evolucion["species"]["name"]) . "\n";
+
+    echo "Apariciones en juegos: ";
+    foreach ($data["game_indices"] as $juego) {
+        echo $juego["version"]["name"] . ", ";
+    }
+    echo "\n";
 }
 
-obtenerPokemon("pikachu");
+obtenerPokemon("charizard");
+?>
