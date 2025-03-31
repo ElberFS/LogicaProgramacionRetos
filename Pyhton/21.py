@@ -9,9 +9,9 @@ import time
 def funcion_parametro(valor):
     print(f"Adios {valor}")
 
-def funcion_principal(funcion,valor):
+def funcion_principal(funcion_callback,valor):
     print(f"Hola {valor}")
-    return funcion(valor)
+    return funcion_callback(valor)
 
 
 funcion_principal(funcion_parametro,"Yuan")
